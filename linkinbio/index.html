@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Marie Harvey — Links</title>
 <meta name="description" content="DTF prints, Pinterest strategy, and everything else Marie Harvey runs — all in one place.">
 <link rel="canonical" href="https://marieharvey.com/linkinbio">
@@ -9,263 +10,558 @@
 <meta property="og:description" content="DTF prints, Pinterest strategy, and everything else Marie Harvey runs — all in one place.">
 <meta property="og:url" content="https://marieharvey.com/linkinbio">
 <meta property="og:image" content="https://marieharvey.com/assets/marie-harvey-diamond.jpg">
-<meta name="theme-color" content="#342846">
+<meta name="theme-color" content="#2A2038" id="theme-color-meta">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:wght@400;600&family=Dancing+Script:wght@700&display=swap">
 <style>
-  :root{
-    --purple:#342846;
-    --gold:#FFCF7F;
-    --lavender:#F5E5FC;
-    --cream:#FFF9ED;
-    --ink:#252525;
-    --glow: 0 3px 7.5px rgba(255,207,127,.35);
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:var(--purple);
-    color:var(--lavender);
-    font-family:'Lora',Georgia,serif;
-    min-height:100vh;
-    position:relative;
-    overflow-x:hidden;
-  }
+:root{
+  --purple:#342846; --plum:#2A2038; --gold:#FFCF7F; --lavender:#F5E5FC; --cream:#FFF9ED; --ink:#252525;
+  --glow:0 3px 7.5px rgba(255,207,127,.35);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html{background:var(--plum)}
+body{margin:0; background:var(--plum); color:var(--lavender); font-family:'Lora',Georgia,serif; overflow-x:hidden}
+img{max-width:100%}
+[hidden]{display:none!important}
 
-  /* subtle animated background: just a faint scattered gold-glitter field, no color gradients. transforms + opacity only. */
-  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-  .glitter{position:absolute;inset:0;
-    background-image:radial-gradient(2px 2px at 12% 18%, rgba(255,207,127,.55), transparent 60%),
-      radial-gradient(2px 2px at 78% 12%, rgba(255,207,127,.4), transparent 60%),
-      radial-gradient(1.5px 1.5px at 34% 62%, rgba(255,207,127,.5), transparent 60%),
-      radial-gradient(2px 2px at 60% 78%, rgba(255,207,127,.35), transparent 60%),
-      radial-gradient(1.5px 1.5px at 90% 55%, rgba(255,207,127,.45), transparent 60%),
-      radial-gradient(2px 2px at 22% 88%, rgba(255,207,127,.3), transparent 60%);
-    animation:twinkle 6s ease-in-out infinite;
-  }
-  @keyframes twinkle{0%,100%{opacity:.6}50%{opacity:1}}
+/* reduced motion: static editorial fallback, same content, no scrub */
+.film, .facet-stage, .glow-follow, .grain, .fx-pill{display:block}
+@media (prefers-reduced-motion: reduce){
+  .film{height:auto!important}
+  .pin-scene{position:relative!important; height:auto!important; min-height:80vh; padding:60px 22px}
+  .facet-stage{display:none}
+  .facet-fallback-photo{display:block!important}
+  .fx-pill, .glow-follow, .grain{display:none!important}
+}
 
-  @media (prefers-reduced-motion: reduce){
-    .glitter{animation:none}
-  }
+/* ---------- preloader ---------- */
+#preloader{
+  position:fixed; inset:0; z-index:100; background:var(--plum);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+  transition:opacity .6s ease, transform .6s ease;
+}
+#preloader.exit{opacity:0; transform:translateY(-14px); pointer-events:none}
+.pl-card{
+  width:120px; height:150px; background:var(--cream); border-radius:2px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45); position:relative; display:flex; align-items:center; justify-content:center;
+  transform:rotate(-3deg);
+}
+.pl-card::before{content:"";position:absolute; top:-8px; left:50%; transform:translateX(-50%) rotate(-4deg); width:46px; height:16px; background:rgba(255,207,127,.55)}
+.pl-gem{width:46px; height:46px; animation:pl-spin 1.6s linear infinite}
+@keyframes pl-spin{to{transform:rotateY(360deg)}}
+.pl-label{font-family:'Playfair Display',serif; font-style:italic; font-size:13px; color:var(--lavender); opacity:.7; letter-spacing:.03em}
 
-  .wrap{
-    position:relative;z-index:1;
-    width:100%;max-width:440px;
-    margin:0 auto;
-    padding:48px 22px 40px;
-    display:flex;flex-direction:column;align-items:center;
-    text-align:center;
-  }
+/* ---------- film driver ---------- */
+.film{position:relative; z-index:1}
+.pin-scene{
+  position:relative; height:100dvh; display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.scene-inner{position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center}
 
-  .avatar-ring{
-    position:relative;
-    width:144px;height:144px;border-radius:50%;
-    padding:5px;
-    background:var(--gold);
-    margin-bottom:20px;
-    box-shadow:0 10px 0 -2px rgba(0,0,0,.25), 0 14px 28px rgba(0,0,0,.4);
-    animation:fadeUp .6s ease both;
-  }
-  .avatar-ring img{
-    width:100%;height:100%;border-radius:50%;object-fit:cover;
-    display:block;border:4px solid var(--purple);
-  }
-  .avatar-gem{
-    position:absolute;bottom:-2px;right:-2px;
-    width:38px;height:38px;border-radius:50%;
-    background:var(--purple);
-    border:3px solid var(--gold);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .avatar-gem svg{width:18px;height:18px;fill:var(--gold)}
+/* Chapter 1 — cover */
+#scene-cover{background:var(--purple)}
+.glitter-field{position:absolute; inset:0;
+  background-image:radial-gradient(2px 2px at 12% 18%, rgba(255,207,127,.55), transparent 60%),
+    radial-gradient(2px 2px at 78% 12%, rgba(255,207,127,.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 34% 62%, rgba(255,207,127,.5), transparent 60%),
+    radial-gradient(2px 2px at 60% 78%, rgba(255,207,127,.35), transparent 60%),
+    radial-gradient(1.5px 1.5px at 90% 55%, rgba(255,207,127,.45), transparent 60%),
+    radial-gradient(2px 2px at 22% 88%, rgba(255,207,127,.3), transparent 60%);
+  animation:twinkle 6s ease-in-out infinite;
+}
+@keyframes twinkle{0%,100%{opacity:.55}50%{opacity:1}}
+.washi-top{position:absolute; top:6%; left:50%; transform:translateX(-50%) rotate(-2deg); width:200px; height:26px; background:rgba(255,207,127,.5)}
+.cover-card{
+  position:relative; text-align:center; padding:26px 22px 22px; margin:0 34px;
+  background:var(--lavender); border-radius:10px; border:1px solid rgba(201,168,106,.55);
+  transform:rotate(-1.4deg); box-shadow:0 22px 46px rgba(0,0,0,.4);
+}
+.cover-name{
+  font-family:'Dancing Script',cursive; font-weight:700; color:var(--purple);
+  font-size:clamp(2.6rem,13dvh,4.6rem); margin:0; line-height:1.15; padding-bottom:.15em;
+  clip-path:inset(0 100% 0 0); will-change:clip-path;
+}
+.cover-tag{font-family:'Playfair Display',serif; font-style:italic; font-weight:700; color:var(--purple); font-size:clamp(1rem,3dvh,1.4rem); margin-top:30px; opacity:0}
+.sticky-note{position:absolute; width:64px; height:56px; background:#fff59a; color:#3a3320; font-family:'Lora',serif; font-size:9px; padding:6px; box-shadow:0 6px 14px rgba(0,0,0,.3); transform:rotate(-6deg)}
+.sn-1{top:16%; left:10%; transform:rotate(-8deg)}
+.sn-2{top:20%; right:9%; transform:rotate(7deg)}
+.sn-3{bottom:20%; left:14%; transform:rotate(5deg)}
+.doodle{position:absolute; opacity:.85}
+.doodle svg{width:100%; height:100%}
+.dd-paperclip{width:34px; height:60px; top:34%; right:16%; transform:rotate(18deg)}
+.dd-butterfly{width:38px; height:32px; bottom:16%; right:24%}
 
-  h1{
-    font-family:'Dancing Script',cursive;
-    font-weight:700;
-    font-size:clamp(34px,9vw,44px);
-    color:var(--gold);
-    margin:0 0 6px;
-    animation:fadeUp .6s .05s ease both;
-  }
+/* Chapter 2 — reveal */
+#scene-reveal{background:var(--plum)}
+.polaroid{
+  position:relative; width:150px; background:var(--cream); padding:10px 10px 26px; border-radius:2px;
+  box-shadow:0 20px 44px rgba(0,0,0,.5); transform:rotate(-2deg);
+}
+.polaroid img{display:block; width:100%; height:170px; object-fit:cover; border-radius:1px}
+.tape-tl,.tape-br{position:absolute; width:40px; height:14px; background:rgba(255,207,127,.55)}
+.tape-tl{top:-7px; left:-8px; transform:rotate(-40deg)}
+.tape-br{bottom:14px; right:-8px; transform:rotate(-40deg)}
+.reveal-photo-full{position:absolute; inset:0; overflow:hidden}
+.reveal-photo-full img{width:100%; height:100%; object-fit:cover; transform:scale(1.15)}
+.reveal-scrim{position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,32,56,.15), rgba(42,32,56,.75) 88%)}
+.reveal-caption{position:absolute; left:0; right:0; bottom:9%; text-align:center; padding:0 24px; opacity:0}
+.reveal-caption h2{font-family:'Playfair Display',serif; font-weight:700; color:var(--gold); font-size:clamp(1.4rem,4.5dvh,2rem); margin:0 0 6px}
+.reveal-caption p{font-size:14px; color:var(--lavender); opacity:.85; margin:0}
 
-  .tagline{
-    font-family:'Playfair Display',serif;
-    font-style:italic;
-    font-weight:700;
-    font-size:19px;
-    color:var(--cream);
-    margin:0 0 8px;
-    animation:fadeUp .6s .1s ease both;
-  }
+/* Chapter 3 — facets / station */
+#scene-facets{background:var(--plum)}
+.facet-fallback-photo{display:none; width:100%; height:100%; object-fit:cover}
+.facet-stage{position:relative; width:min(52vw,200px); aspect-ratio:1/1.25; touch-action:pan-y; cursor:grab; perspective:900px}
+.facet-stage:active{cursor:grabbing}
+.facet-diamond{
+  position:absolute; inset:0; overflow:hidden; will-change:transform;
+  clip-path:polygon(50% 0%, 93% 34%, 78% 100%, 22% 100%, 7% 34%);
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+.facet-diamond img{width:100%; height:100%; object-fit:cover; display:block}
+.facet-sheen{position:absolute; inset:0; background:linear-gradient(115deg, transparent 38%, rgba(255,255,255,.32) 50%, transparent 62%); background-size:220% 220%; mix-blend-mode:screen; pointer-events:none}
+.facet-lines{position:absolute; inset:0; pointer-events:none}
+.facet-lines line{stroke:rgba(255,207,127,.55); stroke-width:.4}
+.chip-ring{position:absolute; inset:0; will-change:transform}
+.facet-chip{
+  position:absolute; left:50%; top:50%; width:0; height:0;
+  transform:rotate(var(--angle)) translateY(-118px);
+}
+.facet-chip span{
+  display:inline-block; transform:translate(-50%,-50%) rotate(calc(-1 * (var(--ring-rot,0deg) + var(--angle,0deg))));
+  padding:6px 11px; border-radius:999px; white-space:nowrap;
+  background:rgba(52,40,70,.88); border:1px solid rgba(255,207,127,.4);
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:10.5px; color:var(--gold);
+  opacity:.3; transition:opacity .25s, transform .25s, background .25s;
+}
+.facet-chip.active span{opacity:1; background:var(--gold); color:var(--purple); transform:translate(-50%,-50%) rotate(calc(-1 * (var(--ring-rot,0deg) + var(--angle,0deg)))) scale(1.12)}
+.facet-hint{position:absolute; bottom:6%; left:0; right:0; text-align:center; font-size:12px; color:var(--lavender); opacity:.6; letter-spacing:.04em}
 
-  .subline{
-    font-size:14.5px;
-    color:var(--lavender);
-    opacity:.85;
-    margin:0 0 28px;
-    line-height:1.6;
-    animation:fadeUp .6s .15s ease both;
-  }
+/* ---------- landing (real content) ---------- */
+.landing{position:relative; z-index:1; background:var(--purple)}
+.cheetah-band{
+  width:100%; height:16px;
+  background-image:radial-gradient(ellipse 10px 7px at 8% 40%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 6px 4px at 11% 55%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 9px 6px at 26% 60%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 5px 4px at 29% 48%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 11px 6px at 45% 35%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 6px 4px at 48% 50%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 9px 7px at 64% 58%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 5px 4px at 66% 45%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 10px 6px at 83% 38%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 6px 4px at 86% 52%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 9px 6px at 97% 60%,#2a2038 40%,transparent 41%);
+  background-color:var(--gold); background-repeat:repeat-x; background-size:140px 100%; position:relative; z-index:2;
+}
+.finale-glow{position:absolute; left:50%; top:120px; width:520px; height:520px; transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(255,207,127,.35), transparent 68%); mix-blend-mode:screen; opacity:0; pointer-events:none}
+.mote{position:absolute; border-radius:50%; background:radial-gradient(circle, rgba(255,207,127,.9), rgba(255,207,127,0) 70%); opacity:0; pointer-events:none}
 
-  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.wrap{position:relative; z-index:1; width:100%; max-width:440px; margin:0 auto; padding:36px 22px 40px; display:flex; flex-direction:column; align-items:center; text-align:center}
+.landing-title{font-family:'Dancing Script',cursive; font-weight:700; color:var(--gold); font-size:clamp(2rem,9vw,2.6rem); margin:0 0 4px}
+.landing-sub{font-family:'Playfair Display',serif; font-style:italic; font-weight:700; color:var(--cream); font-size:15px; margin:0 0 26px; opacity:.85}
+.links{width:100%; display:flex; flex-direction:column; gap:14px}
+.sticker{position:relative}
+.sticker::before{content:"";position:absolute; width:30px; height:11px; background:rgba(255,207,127,.55); top:-5px; left:16px; transform:rotate(-6deg); z-index:2}
+.sticker:nth-child(3n)::before{left:auto; right:16px; transform:rotate(7deg)}
+.btn{
+  display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:56px; border-radius:14px;
+  font-family:'Lora',serif; font-size:16px; font-weight:600; text-decoration:none; transition:transform .12s ease, filter .2s ease;
+  transform:rotate(var(--r,0deg));
+}
+.sticker:nth-child(2n) .btn{--r:-0.6deg}
+.sticker:nth-child(2n+1) .btn{--r:0.5deg}
+.btn:active{transform:rotate(var(--r,0deg)) scale(.97)}
+.btn-primary{background:var(--gold); color:var(--purple); font-weight:700; font-size:17px; box-shadow:var(--glow), 0 8px 22px rgba(0,0,0,.28); border:none}
+.btn-secondary{background:rgba(245,229,252,.06); color:var(--lavender); border:1.5px solid rgba(255,207,127,.45)}
+.disclosure{font-size:11.5px; color:var(--lavender); opacity:.6; margin:-6px 0 0; line-height:1.5}
+.follow-label{font-family:'Playfair Display',serif; font-style:italic; font-weight:700; font-size:14px; color:var(--lavender); opacity:.7; margin:30px 0 14px}
+.icons{display:flex; gap:18px; margin-bottom:26px; flex-wrap:wrap; justify-content:center}
+.icon-link{width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(245,229,252,.08); border:1px solid rgba(255,207,127,.35); transition:transform .12s ease}
+.icon-link:active{transform:scale(.92)}
+.icon-link svg{width:19px; height:19px; fill:var(--gold)}
+footer{font-family:'Dancing Script',cursive; font-size:16px; color:var(--lavender); opacity:.65; margin-top:4px}
+@keyframes drop-in{from{opacity:0; transform:translateY(24px) rotate(var(--r,0deg)) scale(.9)}to{opacity:1; transform:translateY(0) rotate(var(--r,0deg)) scale(1)}}
 
-  .links{width:100%;display:flex;flex-direction:column;gap:14px}
+/* ---------- fast-path pill ---------- */
+.fx-pill{
+  position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom)); transform:translate(-50%,80px);
+  z-index:40; background:var(--gold); color:var(--purple); font-family:'Lora',serif; font-weight:700; font-size:13px;
+  padding:11px 20px; border-radius:999px; box-shadow:0 8px 22px rgba(0,0,0,.35); border:none; opacity:0;
+  transition:transform .35s cubic-bezier(.2,1.4,.4,1), opacity .35s ease;
+}
+.fx-pill.show{transform:translate(-50%,0); opacity:1}
 
-  .btn{
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;min-height:56px;
-    border-radius:35px;
-    font-family:'Lora',serif;
-    font-size:16px;font-weight:600;
-    text-decoration:none;
-    -webkit-tap-highlight-color:transparent;
-    transition:transform .12s ease, filter .2s ease, box-shadow .2s ease;
-    animation:fadeUp .5s ease both;
-  }
-  .btn:active{transform:scale(.97)}
-  .btn:hover{filter:brightness(1.06)}
+/* ---------- sound toggle ---------- */
+.sound-toggle{
+  position:fixed; left:calc(16px + env(safe-area-inset-left)); bottom:calc(18px + env(safe-area-inset-bottom));
+  z-index:40; width:42px; height:42px; border-radius:50%; background:rgba(42,32,56,.7); backdrop-filter:blur(6px);
+  border:1px solid rgba(255,207,127,.4); display:flex; align-items:center; justify-content:center; gap:2px;
+}
+.sound-toggle .bar{width:3px; background:var(--gold); border-radius:2px; height:6px; transition:height .2s}
+.sound-toggle.on .bar{animation:eq 1s ease-in-out infinite}
+.sound-toggle .bar:nth-child(2){animation-delay:.15s}
+.sound-toggle .bar:nth-child(3){animation-delay:.3s}
+@keyframes eq{0%,100%{height:5px}50%{height:14px}}
 
-  .btn-primary{
-    background:var(--gold);
-    color:var(--purple);
-    font-weight:700;
-    font-size:17px;
-    box-shadow:var(--glow), 0 8px 22px rgba(0,0,0,.28);
-    border:none;
-  }
-  .btn-secondary{
-    background:rgba(245,229,252,.06);
-    color:var(--lavender);
-    border:1.5px solid rgba(255,207,127,.45);
-  }
+/* ---------- touch glow-follow ---------- */
+.glow-follow{position:fixed; width:180px; height:180px; border-radius:50%; pointer-events:none; z-index:5;
+  background:radial-gradient(circle, rgba(255,207,127,.35), transparent 70%); mix-blend-mode:screen;
+  transform:translate(-50%,-50%); opacity:0; transition:opacity .3s}
 
-  .btn span.label-sub{
-    display:block;font-size:12px;font-weight:400;opacity:.75;margin-top:2px;
-  }
-  .btn-stack{display:flex;flex-direction:column;line-height:1.25}
+/* ---------- grain ---------- */
+.grain{position:fixed; inset:0; z-index:6; pointer-events:none; opacity:0; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-  .disclosure{
-    font-size:11.5px;color:var(--lavender);opacity:.6;
-    margin:-6px 0 0;line-height:1.5;
-    animation:fadeUp .5s ease both;
+/* ---------- desktop cinema stage ---------- */
+@media (min-width:1024px) and (pointer:fine){
+  body{display:flex; justify-content:center; background:var(--plum)}
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0;
+    background:url('../assets/marie-harvey-diamond.jpg') center/cover;
+    filter:blur(60px) brightness(.35) saturate(1.3);
   }
-
-  .cheetah-band{
-    width:100%;height:16px;
-    background-image:radial-gradient(ellipse 10px 7px at 8% 40%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 6px 4px at 11% 55%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 9px 6px at 26% 60%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 5px 4px at 29% 48%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 11px 6px at 45% 35%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 6px 4px at 48% 50%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 9px 7px at 64% 58%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 5px 4px at 66% 45%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 10px 6px at 83% 38%,#2a2038 40%,transparent 41%),radial-gradient(ellipse 6px 4px at 86% 52%,#8a6aa8 45%,transparent 46%),radial-gradient(ellipse 9px 6px at 97% 60%,#2a2038 40%,transparent 41%);
-    background-color:var(--gold);
-    background-repeat:repeat-x;background-size:140px 100%;
-    position:relative;z-index:2;
-    flex:none;
-  }
-
-  .follow-label{
-    font-family:'Playfair Display',serif;font-style:italic;font-weight:700;
-    font-size:14px;color:var(--lavender);opacity:.7;margin:30px 0 14px;
-  }
-  .icons{display:flex;gap:18px;margin-bottom:26px;flex-wrap:wrap;justify-content:center}
-  .icon-link{
-    width:44px;height:44px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:rgba(245,229,252,.08);
-    border:1px solid rgba(255,207,127,.35);
-    transition:transform .12s ease;
-  }
-  .icon-link:active{transform:scale(.92)}
-  .icon-link svg{width:19px;height:19px;fill:var(--gold)}
-
-  footer{
-    font-family:'Dancing Script',cursive;
-    font-size:16px;color:var(--lavender);opacity:.65;
-    margin-top:4px;
-  }
-
-  @media (max-width:360px){
-    .wrap{padding:36px 16px 32px}
-    h1{font-size:32px}
-  }
+  #app{position:relative; z-index:1; width:min(46vw,720px); box-shadow:0 0 120px rgba(0,0,0,.6)}
+  .glow-follow, .grain{display:none}
+}
 </style>
 </head>
 <body>
 
-<div class="bg" aria-hidden="true"><div class="glitter"></div></div>
+<div id="preloader"><div class="pl-card">
+  <svg class="pl-gem" viewBox="0 0 24 24" fill="#FFCF7F"><path d="M12 1.5 2 9l10 13.5L22 9 12 1.5Z"/></svg>
+</div><p class="pl-label">cutting the gem…</p></div>
 
-<div class="cheetah-band" aria-hidden="true"></div>
+<div id="app">
 
-<div class="wrap">
+<div class="glow-follow" id="glowFollow" aria-hidden="true"></div>
+<div class="grain" id="grain" aria-hidden="true"></div>
 
-  <div class="avatar-ring">
-    <img src="../assets/marie-harvey-diamond.jpg" alt="Marie Harvey holding a diamond in front of a purple sequin backdrop" width="144" height="144">
-    <span class="avatar-gem" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M12 1.5 2 9l10 13.5L22 9 12 1.5Z"/></svg>
-    </span>
+<div class="film" id="film">
+
+  <section class="pin-scene" id="scene-cover">
+    <div class="scene-inner">
+      <div class="glitter-field" aria-hidden="true"></div>
+      <div class="washi-top" aria-hidden="true"></div>
+      <div class="sticky-note sn-1">100 tabs open</div>
+      <div class="sticky-note sn-2">ship it anyway</div>
+      <div class="sticky-note sn-3">mom of 7 lol</div>
+      <div class="doodle dd-paperclip" aria-hidden="true"><svg viewBox="0 0 24 40" fill="none" stroke="#FFCF7F" stroke-width="2"><path d="M6 8v20a6 6 0 0012 0V10a4 4 0 00-8 0v16a2 2 0 004 0V12"/></svg></div>
+      <div class="doodle dd-butterfly" aria-hidden="true"><svg viewBox="0 0 40 32" fill="#FFCF7F" opacity=".8"><path d="M20 16c-4-10-16-12-18-4 6 2 12 2 18 4Zm0 0c4-10 16-12 18-4-6 2-12 2-18 4Zm0 0c-3 8-13 10-16 4 5-1 10-2 16-4Zm0 0c3 8 13 10 16 4-5-1-10-2-16-4Z"/></svg></div>
+      <div class="cover-card">
+        <h1 class="cover-name" id="coverName">Marie Harvey</h1>
+        <p class="cover-tag" id="coverTag">Businesses. Babies. No fluff.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pin-scene" id="scene-reveal">
+    <div class="scene-inner">
+      <div class="reveal-photo-full" id="revealPhotoFull" style="opacity:0"><img src="../assets/marie-harvey-diamond.jpg" alt="Marie Harvey holding a diamond in front of a purple sequin backdrop"><div class="reveal-scrim"></div></div>
+      <div class="polaroid" id="polaroid">
+        <div class="tape-tl"></div><div class="tape-br"></div>
+        <img src="../assets/marie-harvey-diamond.jpg" alt="">
+      </div>
+      <div class="reveal-caption" id="revealCaption">
+        <h2>Mom of 7 in Wichita, KS</h2>
+        <p>Running Marie Gems + Lavender Pin Co</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pin-scene" id="scene-facets">
+    <div class="scene-inner">
+      <img class="facet-fallback-photo" src="../assets/marie-harvey-diamond.jpg" alt="Marie Harvey holding a diamond">
+      <div class="facet-stage" id="facetStage">
+        <div class="chip-ring" id="chipRing"></div>
+        <div class="facet-diamond" id="facetDiamond">
+          <img src="../assets/marie-harvey-diamond.jpg" alt="Marie Harvey holding a diamond">
+          <div class="facet-sheen" id="facetSheen"></div>
+          <svg class="facet-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <line x1="50" y1="0" x2="50" y2="100"/>
+            <line x1="7" y1="34" x2="93" y2="34"/>
+            <line x1="50" y1="0" x2="7" y2="34"/>
+            <line x1="50" y1="0" x2="93" y2="34"/>
+            <line x1="7" y1="34" x2="22" y2="100"/>
+            <line x1="93" y1="34" x2="78" y2="100"/>
+          </svg>
+        </div>
+      </div>
+      <p class="facet-hint">turn the gem</p>
+    </div>
+  </section>
+
+</div><!-- /.film -->
+
+<div class="landing" id="landing">
+  <div class="cheetah-band" aria-hidden="true"></div>
+  <div class="finale-glow" id="finaleGlow" aria-hidden="true"></div>
+  <div id="motes" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <h2 class="landing-title">the page</h2>
+    <p class="landing-sub">everything, taped in one spot</p>
+
+    <div class="links">
+      <div class="sticker"><a class="btn btn-primary" href="https://mariegems.com" target="_blank" rel="noopener">Shop Marie Gems</a></div>
+      <div class="sticker"><a class="btn btn-secondary" href="https://mariegemsdtf.com" target="_blank" rel="noopener">Shop the DTF Etsy Store</a></div>
+      <div class="sticker"><a class="btn btn-secondary" href="https://www.redbubble.com/people/MariesStudio/shop" target="_blank" rel="noopener">Shop My Redbubble</a></div>
+      <div class="sticker"><a class="btn btn-secondary" href="https://www.vinted.com/member/3171939066" target="_blank" rel="noopener">Shop My Vinted Closet</a></div>
+      <div class="sticker"><a class="btn btn-secondary" href="https://lavenderpinco.com" target="_blank" rel="noopener">Work with Lavender Pin Co</a></div>
+      <div class="sticker">
+        <a class="btn btn-secondary" href="https://a.co/d/0fFnQkR2" target="_blank" rel="sponsored noopener">My Amazon Storefront</a>
+        <p class="disclosure">As an Amazon Associate, I earn from qualifying purchases.</p>
+      </div>
+      <div class="sticker"><a class="btn btn-secondary" href="https://benable.com/mariegems" target="_blank" rel="sponsored noopener">My Benable Picks</a></div>
+      <div class="sticker"><a class="btn btn-secondary" href="https://marieharvey.com" target="_blank" rel="noopener">Meet Marie — Read My Story</a></div>
+    </div>
+
+    <p class="follow-label">Follow along</p>
+    <div class="icons">
+      <a class="icon-link" href="https://www.facebook.com/juanitamarieharvey" target="_blank" rel="noopener" aria-label="Marie Harvey on Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
+      <a class="icon-link" href="https://www.instagram.com/mariegemsdtf/" target="_blank" rel="noopener" aria-label="Marie Gems on Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.22.41.56.21.96.47 1.38.89.42.42.68.82.89 1.38.17.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.22-.21.56-.47.96-.89 1.38-.42.42-.82.68-1.38.89-.42.17-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.22-.41-.56-.21-.96-.47-1.38-.89-.42-.42-.68-.82-.89-1.38-.17-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.22.21-.56.47-.96.89-1.38.42-.42.82-.68 1.38-.89.42-.17 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38C1.35 2.67.94 3.34.63 4.13c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.33 1.35 20.66.94 19.87.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84Zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4Zm6.41-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44Z"/></svg></a>
+      <a class="icon-link" href="https://www.youtube.com/@mariegemsdtf" target="_blank" rel="noopener" aria-label="Marie Gems on YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.6 15.6V8.4l6.24 3.6Z"/></svg></a>
+      <a class="icon-link" href="https://www.tiktok.com/@mariegemsdtf" target="_blank" rel="noopener" aria-label="Marie Gems on TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.05-2.77V9.13a6.1 6.1 0 1 0 5.25 6.04V8.3a7.6 7.6 0 0 0 4.4 1.4V6.5a4.4 4.4 0 0 1-4.4-4.4Z"/></svg></a>
+      <a class="icon-link" href="https://www.pinterest.com/marieharveyco" target="_blank" rel="noopener" aria-label="Marie Harvey on Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.32-.09-.79-.17-2.01.04-2.88.19-.79 1.23-5.02 1.23-5.02s-.31-.63-.31-1.55c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.25-.87 3.5-.25 1.05.52 1.9 1.55 1.9 1.86 0 3.29-1.96 3.29-4.79 0-2.5-1.8-4.25-4.36-4.25-2.97 0-4.71 2.23-4.71 4.53 0 .9.34 1.86.78 2.38a.32.32 0 0 1 .07.3c-.08.32-.25 1.05-.29 1.19-.04.19-.15.23-.35.14-1.3-.61-2.11-2.51-2.11-4.04 0-3.29 2.39-6.31 6.9-6.31 3.62 0 6.44 2.58 6.44 6.03 0 3.6-2.27 6.49-5.42 6.49-1.06 0-2.05-.55-2.39-1.2l-.65 2.48c-.24.91-.87 2.05-1.3 2.75.98.3 2.02.46 3.09.46 5.52 0 10-4.48 10-10S17.52 2 12 2Z"/></svg></a>
+    </div>
+    <footer>Marie Harvey</footer>
   </div>
+</div><!-- /.landing -->
 
-  <h1>Marie Harvey</h1>
-  <p class="tagline">Businesses. Babies. No fluff.</p>
-  <p class="subline">Mom of 7 in Wichita, KS running Marie Gems + Lavender Pin Co</p>
+</div><!-- /#app -->
 
-  <div class="links">
+<button class="fx-pill" id="fxPill" type="button">Jump to links ↓</button>
+<button class="sound-toggle" id="soundToggle" type="button" aria-label="Toggle sound">
+  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+</button>
 
-    <a class="btn btn-primary" href="https://mariegems.com" target="_blank" rel="noopener">
-      Shop Marie Gems
-    </a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var params = new URLSearchParams(location.search);
+  var JUMP = params.get('jump');
+  if (JUMP !== null) history.scrollRestoration = 'manual';
 
-    <a class="btn btn-secondary" href="https://mariegemsdtf.com" target="_blank" rel="noopener">
-      Shop the DTF Etsy Store
-    </a>
+  /* ---------------- sound (synthesized, muted by default) ---------------- */
+  var audioCtx = null, ambientGain = null, unlocked = false, soundOn = false;
+  function ensureCtx(){
+    if (audioCtx) return audioCtx;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var buf = audioCtx.createBuffer(1,1,22050); var src = audioCtx.createBufferSource();
+    src.buffer = buf; src.connect(audioCtx.destination); src.start(0);
+    return audioCtx;
+  }
+  function startAmbient(){
+    var ctx = ensureCtx();
+    var len = ctx.sampleRate * 3, buf = ctx.createBuffer(1, len, ctx.sampleRate), data = buf.getChannelData(0);
+    for (var i=0;i<len;i++) data[i] = (Math.random()*2-1) * 0.06;
+    var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
+    var filt = ctx.createBiquadFilter(); filt.type='lowpass'; filt.frequency.value=340;
+    ambientGain = ctx.createGain(); ambientGain.gain.value = 0;
+    src.connect(filt).connect(ambientGain).connect(ctx.destination); src.start(0);
+    ambientGain.gain.setTargetAtTime(0.35, ctx.currentTime, 0.4);
+  }
+  function tick(freq){
+    if (!soundOn || !audioCtx) return;
+    var ctx = audioCtx, o = ctx.createOscillator(), g = ctx.createGain();
+    o.type='sine'; o.frequency.value = freq || 880;
+    g.gain.setValueAtTime(0.0001, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+0.5);
+    o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime+0.5);
+  }
+  var soundToggle = document.getElementById('soundToggle');
+  soundToggle.addEventListener('click', function(){
+    if (!unlocked){ ensureCtx(); startAmbient(); unlocked = true; }
+    soundOn = !soundOn;
+    soundToggle.classList.toggle('on', soundOn);
+    if (ambientGain) ambientGain.gain.setTargetAtTime(soundOn?0.35:0, audioCtx.currentTime, 0.3);
+  });
 
-    <a class="btn btn-secondary" href="https://www.redbubble.com/people/MariesStudio/shop" target="_blank" rel="noopener">
-      Shop My Redbubble
-    </a>
+  /* ---------------- haptics ---------------- */
+  function haptic(pattern){ if (navigator.vibrate) navigator.vibrate(pattern); }
 
-    <a class="btn btn-secondary" href="https://www.vinted.com/member/3171939066" target="_blank" rel="noopener">
-      Shop My Vinted Closet
-    </a>
+  /* ---------------- theme-color per chapter ---------------- */
+  var themeMeta = document.getElementById('theme-color-meta');
+  var chapterColors = { cover:'#342846', reveal:'#2A2038', facets:'#2A2038', landing:'#342846' };
+  function setTheme(hex){ themeMeta.setAttribute('content', hex); }
 
-    <a class="btn btn-secondary" href="https://lavenderpinco.com" target="_blank" rel="noopener">
-      Work with Lavender Pin Co
-    </a>
+  /* ---------------- facet chips (orbit a stationary, undistorted photo) ---------------- */
+  var chipRing = document.getElementById('chipRing');
+  var chipDefs = ['Marie Gems','Etsy DTF','Lavender Pin Co','Amazon Finds','Benable','Meet Marie'];
+  var chips = chipDefs.map(function(name, i){
+    var angle = i * (360 / chipDefs.length);
+    var el = document.createElement('div');
+    el.className = 'facet-chip'; el.style.setProperty('--angle', angle + 'deg');
+    var span = document.createElement('span'); span.textContent = name;
+    el.appendChild(span); chipRing.appendChild(el);
+    return { el:el, span:span, angle:angle };
+  });
+  var facetStage = document.getElementById('facetStage');
+  var facetDiamond = document.getElementById('facetDiamond');
+  var facetSheen = document.getElementById('facetSheen');
+  var dragging = false, startX = 0, startY = 0, ringRot = 0, dragStartRot = 0, lastActive = -1;
+  function applyRing(rot){
+    chipRing.style.transform = 'rotate(' + rot + 'deg)';
+    chips.forEach(function(c){ c.span.style.setProperty('--ring-rot', rot + 'deg'); });
+    var norm = ((-rot % 360) + 360) % 360;
+    var idx = Math.round(norm / (360/chipDefs.length)) % chipDefs.length;
+    chips.forEach(function(c,i){ c.el.classList.toggle('active', i===idx); });
+    if (idx !== lastActive){ lastActive = idx; haptic(6); tick(660 + idx*40); }
+    var tilt = Math.max(-10, Math.min(10, (rot%360)/8));
+    facetDiamond.style.transform = 'rotateY(' + tilt + 'deg)';
+    facetSheen.style.backgroundPosition = (50 + rot*0.6) + '% 50%';
+  }
+  facetStage.addEventListener('pointerdown', function(e){
+    dragging = true; startX = e.clientX; startY = e.clientY; dragStartRot = ringRot;
+    facetStage.setPointerCapture(e.pointerId);
+  });
+  facetStage.addEventListener('pointermove', function(e){
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    ringRot = dragStartRot + dx * 0.6;
+    applyRing(ringRot);
+  });
+  function releaseFacet(){ dragging = false; }
+  facetStage.addEventListener('pointerup', releaseFacet);
+  facetStage.addEventListener('pointercancel', releaseFacet);
+  applyRing(0);
 
-    <a class="btn btn-secondary" href="https://a.co/d/0fFnQkR2" target="_blank" rel="sponsored noopener">
-      My Amazon Storefront
-    </a>
-    <p class="disclosure">As an Amazon Associate, I earn from qualifying purchases.</p>
+  /* ---------------- landing finale (motes + glow + spring-in buttons) ---------------- */
+  var landingFired = false;
+  function fireFinale(){
+    if (landingFired) return; landingFired = true;
+    haptic([12,60,24]); tick(988);
+    gsap.to('#finaleGlow', {opacity:1, duration:1.1, ease:'power2.out', onComplete:function(){
+      gsap.to('#finaleGlow', {opacity:0, duration:1.8, delay:.4});
+    }});
+    var stickers = gsap.utils.toArray('.sticker');
+    gsap.set(stickers, {opacity:0, y:26});
+    gsap.to(stickers, {opacity:1, y:0, duration:.8, ease:'elastic.out(1,0.55)', stagger:.06});
+    var motesEl = document.getElementById('motes');
+    for (var i=0;i<34;i++){
+      var m = document.createElement('div'); m.className='mote';
+      var size = 4 + Math.random()*7;
+      m.style.width = size+'px'; m.style.height = size+'px';
+      m.style.left = (Math.random()*100)+'%'; m.style.top = (60+Math.random()*30)+'%';
+      motesEl.appendChild(m);
+      gsap.to(m, {opacity:.9, duration:.6, delay:Math.random()*.5});
+      gsap.to(m, {y:-120-Math.random()*140, opacity:0, duration:3+Math.random()*2, delay:.4+Math.random()*.6, ease:'power1.out'});
+    }
+  }
 
-    <a class="btn btn-secondary" href="https://benable.com/mariegems" target="_blank" rel="sponsored noopener">
-      My Benable Picks
-    </a>
+  /* ---------------- fast-path pill ---------------- */
+  var fxPill = document.getElementById('fxPill');
+  fxPill.addEventListener('click', function(){
+    document.getElementById('landing').scrollIntoView({behavior:'smooth'});
+  });
 
-    <a class="btn btn-secondary" href="https://marieharvey.com" target="_blank" rel="noopener">
-      Meet Marie — Read My Story
-    </a>
+  /* ---------------- glow-follow (touch-reactive, tapers with scroll) ---------------- */
+  var glow = document.getElementById('glowFollow');
+  var glowGain = 1;
+  function moveGlow(x,y){ glow.style.transform = 'translate('+(x-90)+'px,'+(y-90)+'px)'; glow.style.opacity = String(0.9*glowGain); }
+  window.addEventListener('pointermove', function(e){ moveGlow(e.clientX, e.clientY); }, {passive:true});
+  window.addEventListener('pointerleave', function(){ glow.style.opacity = '0'; });
 
-  </div>
+  /* ---------------- velocity grade (grain + micro effects) ---------------- */
+  var grain = document.getElementById('grain');
+  var lastY = window.scrollY, velocity = 0;
+  function onScrollVelocity(){
+    var y = window.scrollY, v = Math.abs(y-lastY); lastY = y;
+    velocity = velocity*0.85 + v*0.15;
+    var op = Math.min(0.18, velocity/220);
+    grain.style.opacity = String(op);
+    var progress = Math.min(1, y / (document.body.scrollHeight - innerHeight || 1));
+    glowGain = Math.max(0.25, 1 - progress*2.4);
+    var landingRect = landingEl.getBoundingClientRect();
+    var atLinks = landingRect.top < innerHeight * 0.6;
+    if (atLinks){ fxPill.classList.remove('show'); }
+    else if (y > innerHeight*0.35){ fxPill.classList.add('show'); }
+  }
+  var landingEl = document.getElementById('landing');
+  window.addEventListener('scroll', onScrollVelocity, {passive:true});
 
-  <p class="follow-label">Follow along</p>
-  <div class="icons">
-    <a class="icon-link" href="https://www.facebook.com/juanitamarieharvey" target="_blank" rel="noopener" aria-label="Marie Harvey on Facebook">
-      <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
-    </a>
-    <a class="icon-link" href="https://www.instagram.com/mariegemsdtf/" target="_blank" rel="noopener" aria-label="Marie Gems on Instagram">
-      <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.22.41.56.21.96.47 1.38.89.42.42.68.82.89 1.38.17.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.22-.21.56-.47.96-.89 1.38-.42.42-.82.68-1.38.89-.42.17-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.22-.41-.56-.21-.96-.47-1.38-.89-.42-.42-.68-.82-.89-1.38-.17-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.22.21-.56.47-.96.89-1.38.42-.42.82-.68 1.38-.89.42-.17 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.38C1.35 2.67.94 3.34.63 4.13c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.33 1.35 20.66.94 19.87.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84Zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4Zm6.41-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44Z"/></svg>
-    </a>
-    <a class="icon-link" href="https://www.youtube.com/@mariegemsdtf" target="_blank" rel="noopener" aria-label="Marie Gems on YouTube">
-      <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.6 15.6V8.4l6.24 3.6Z"/></svg>
-    </a>
-    <a class="icon-link" href="https://www.tiktok.com/@mariegemsdtf" target="_blank" rel="noopener" aria-label="Marie Gems on TikTok">
-      <svg viewBox="0 0 24 24"><path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.05-2.77V9.13a6.1 6.1 0 1 0 5.25 6.04V8.3a7.6 7.6 0 0 0 4.4 1.4V6.5a4.4 4.4 0 0 1-4.4-4.4Z"/></svg>
-    </a>
-    <a class="icon-link" href="https://www.pinterest.com/marieharveyco" target="_blank" rel="noopener" aria-label="Marie Harvey on Pinterest">
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.32-.09-.79-.17-2.01.04-2.88.19-.79 1.23-5.02 1.23-5.02s-.31-.63-.31-1.55c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.25-.87 3.5-.25 1.05.52 1.9 1.55 1.9 1.86 0 3.29-1.96 3.29-4.79 0-2.5-1.8-4.25-4.36-4.25-2.97 0-4.71 2.23-4.71 4.53 0 .9.34 1.86.78 2.38a.32.32 0 0 1 .07.3c-.08.32-.25 1.05-.29 1.19-.04.19-.15.23-.35.14-1.3-.61-2.11-2.51-2.11-4.04 0-3.29 2.39-6.31 6.9-6.31 3.62 0 6.44 2.58 6.44 6.03 0 3.6-2.27 6.49-5.42 6.49-1.06 0-2.05-.55-2.39-1.2l-.65 2.48c-.24.91-.87 2.05-1.3 2.75.98.3 2.02.46 3.09.46 5.52 0 10-4.48 10-10S17.52 2 12 2Z"/></svg>
-    </a>
-  </div>
+  /* ---------------- GSAP timelines ---------------- */
+  function boot(){
+    if (window.gsap && window.ScrollTrigger && !reduced){
+      gsap.registerPlugin(ScrollTrigger);
+      var fine = matchMedia('(pointer: fine)').matches;
+      if (fine && window.Lenis){
+        var lenis = new Lenis({ lerp:0.09, smoothWheel:true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
 
-  <footer>Marie Harvey</footer>
+      // Chapter 1 — name writes on once immediately (must be visible at scroll 0), tagline + scale-out tied to scroll
+      gsap.to('#coverName', { clipPath:'inset(0 0% 0 0)', duration:1.1, ease:'power2.out', delay:.15 });
+      gsap.timeline({ scrollTrigger:{ trigger:'#scene-cover', start:'top top', end:'+=100%', scrub:true, pin:true,
+        onEnter:function(){ setTheme(chapterColors.cover); haptic(8); },
+        onEnterBack:function(){ setTheme(chapterColors.cover); }
+      }})
+      .to('#coverTag', { opacity:1, ease:'none' }, 0.15)
+      .to('.cover-card', { scale:.92, opacity:.3, ease:'none' }, 0.75);
 
-</div>
+      // Chapter 2 — reveal
+      gsap.timeline({ scrollTrigger:{ trigger:'#scene-reveal', start:'top top', end:'+=120%', scrub:true, pin:true,
+        onEnter:function(){ setTheme(chapterColors.reveal); haptic(8); },
+        onEnterBack:function(){ setTheme(chapterColors.reveal); }
+      }})
+      .to('#polaroid', { scale:6, rotate:0, ease:'power1.inOut' }, 0)
+      .to('#polaroid', { opacity:0, ease:'none' }, 0.55)
+      .to('#revealPhotoFull', { opacity:1, ease:'none' }, 0.5)
+      .to('#revealCaption', { opacity:1, y:-6, ease:'none' }, 0.65);
 
-<div class="cheetah-band" aria-hidden="true"></div>
+      // Chapter 3 — facets
+      ScrollTrigger.create({ trigger:'#scene-facets', start:'top top', end:'+=140%', pin:true, scrub:true,
+        onEnter:function(){ setTheme(chapterColors.facets); haptic(10); },
+        onEnterBack:function(){ setTheme(chapterColors.facets); }
+      });
 
+      // Landing finale trigger
+      ScrollTrigger.create({ trigger:'#landing', start:'top 70%', onEnter:function(){ setTheme(chapterColors.landing); fireFinale(); } });
+
+    } else {
+      // reduced-motion / no-gsap fallback: everything visible immediately
+      document.getElementById('coverName').style.clipPath = 'inset(0 0% 0 0)';
+      document.getElementById('coverTag').style.opacity = '1';
+      document.getElementById('revealCaption').style.opacity = '1';
+      document.getElementById('revealPhotoFull').style.opacity = '1';
+      document.querySelector('.facet-fallback-photo').style.display = 'block';
+      document.getElementById('facetStage').style.display = 'none';
+      fireFinale();
+    }
+
+    // dev contract — settle pin-spacer layout before forcing scroll, or a late image-load
+    // reflow (scroll anchoring) silently snaps the jump back to 0.
+    if (JUMP !== null){
+      var landJump = function(){
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+        window.scrollTo(0, +JUMP || 0);
+        if (window.ScrollTrigger) ScrollTrigger.update();
+        velocity = 0; glowGain = 1;
+        if (+JUMP > 200) fireFinale();
+        window.__ready = true;
+      };
+      requestAnimationFrame(function(){ requestAnimationFrame(landJump); });
+    } else {
+      window.__ready = true;
+    }
+  }
+
+  /* ---------------- preloader (gated on font + image) ---------------- */
+  var pre = document.getElementById('preloader');
+  var img = new Image(); var imgLoaded = false, fontsReady = false;
+  img.onload = function(){ imgLoaded = true; tryExit(); };
+  img.onerror = function(){ imgLoaded = true; tryExit(); };
+  img.src = '../assets/marie-harvey-diamond.jpg';
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ fontsReady = true; tryExit(); }); }
+  else { fontsReady = true; }
+  var exited = false;
+  function tryExit(){
+    if (exited || !imgLoaded || !fontsReady) return; exited = true;
+    setTimeout(function(){
+      pre.classList.add('exit');
+      setTimeout(function(){ pre.hidden = true; boot(); }, 650);
+    }, 250);
+  }
+  setTimeout(function(){ imgLoaded = true; fontsReady = true; tryExit(); }, 2500); // safety timeout
+})();
+</script>
 </body></html>
