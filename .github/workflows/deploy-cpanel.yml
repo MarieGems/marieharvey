@@ -21,16 +21,19 @@ jobs:
         env:
           CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
           http_code=$(curl -sS -o response.json -w '%{http_code}' \
             -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
             --data-urlencode "repository_root=${REPO_ROOT}" \
             "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControl/update")
-          status=$(jq -r '.status // "null"' response.json)
-          echo "HTTP $http_code, UAPI status $status"
+          echo "HTTP status: $http_code"
+          echo "--- response body ---"
+          cat response.json
+          echo ""
+          echo "--- end response body ---"
+          status=$(jq -r '.status // empty' response.json 2>/dev/null)
           if [ "$http_code" != "200" ] || [ "$status" != "1" ]; then
-            echo "::error::Failed to update cPanel repository from GitHub"
-            jq -r '.errors[]? // .' response.json || cat response.json
+            echo "::error::Failed to update cPanel repository from GitHub (HTTP $http_code, UAPI status '$status')"
             exit 1
           fi
           echo "cPanel repository updated from GitHub."
@@ -40,22 +43,24 @@ jobs:
         env:
           CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
           http_code=$(curl -sS -o response.json -w '%{http_code}' \
             -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
             --data-urlencode "repository_root=${REPO_ROOT}" \
             "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControlDeployment/create")
-          status=$(jq -r '.status // "null"' response.json)
-          echo "HTTP $http_code, UAPI status $status"
+          echo "HTTP status: $http_code"
+          echo "--- response body ---"
+          cat response.json
+          echo ""
+          echo "--- end response body ---"
+          status=$(jq -r '.status // empty' response.json 2>/dev/null)
           if [ "$http_code" != "200" ] || [ "$status" != "1" ]; then
-            echo "::error::Failed to trigger cPanel deployment"
-            jq -r '.errors[]? // .' response.json || cat response.json
+            echo "::error::Failed to trigger cPanel deployment (HTTP $http_code, UAPI status '$status')"
             exit 1
           fi
-          task_id=$(jq -r '.data.task_id // .data[0].task_id // empty' response.json)
+          task_id=$(jq -r '.data.task_id // .data[0].task_id // empty' response.json 2>/dev/null)
           if [ -z "$task_id" ]; then
             echo "::error::No task_id returned by cPanel"
-            cat response.json
             exit 1
           fi
           echo "Deployment triggered, task_id=$task_id"
@@ -66,19 +71,22 @@ jobs:
           CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
           TASK_ID: ${{ steps.deploy.outputs.task_id }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
           for i in $(seq 1 60); do
             curl -sS -o retrieve.json \
               -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
               --data-urlencode "task_id=${TASK_ID}" \
               "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControlDeployment/retrieve"
 
-            failed=$(jq -r '.data.timestamps.failed // .data[0].timestamps.failed // empty' retrieve.json)
-            succeeded=$(jq -r '.data.timestamps.succeeded // .data[0].timestamps.succeeded // empty' retrieve.json)
+            echo "--- poll $i response body ---"
+            cat retrieve.json
+            echo ""
+
+            failed=$(jq -r '.data.timestamps.failed // .data[0].timestamps.failed // empty' retrieve.json 2>/dev/null)
+            succeeded=$(jq -r '.data.timestamps.succeeded // .data[0].timestamps.succeeded // empty' retrieve.json 2>/dev/null)
 
             if [ -n "$failed" ]; then
               echo "::error::cPanel deployment failed at $failed"
-              jq -r '.data.output // .data[0].output // .' retrieve.json
               exit 1
             fi
             if [ -n "$succeeded" ]; then
