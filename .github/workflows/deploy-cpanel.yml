@@ -1,0 +1,91 @@
+name: Deploy to cPanel
+
+# Fires on every push to main, plus a manual "Run workflow" button for
+# re-running a deploy without needing a new commit.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+env:
+  CPANEL_HOST: premium105.web-hosting.com
+  CPANEL_PORT: "2083"
+  CPANEL_USERNAME: marirahg
+  REPO_ROOT: /home/marirahg/repositories/marieharvey
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update cPanel's repository from GitHub (Update from Remote)
+        env:
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          http_code=$(curl -sS -o response.json -w '%{http_code}' \
+            -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
+            --data-urlencode "repository_root=${REPO_ROOT}" \
+            "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControl/update")
+          status=$(jq -r '.status // "null"' response.json)
+          echo "HTTP $http_code, UAPI status $status"
+          if [ "$http_code" != "200" ] || [ "$status" != "1" ]; then
+            echo "::error::Failed to update cPanel repository from GitHub"
+            jq -r '.errors[]? // .' response.json || cat response.json
+            exit 1
+          fi
+          echo "cPanel repository updated from GitHub."
+
+      - name: Trigger cPanel deployment (Deploy HEAD Commit)
+        id: deploy
+        env:
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          http_code=$(curl -sS -o response.json -w '%{http_code}' \
+            -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
+            --data-urlencode "repository_root=${REPO_ROOT}" \
+            "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControlDeployment/create")
+          status=$(jq -r '.status // "null"' response.json)
+          echo "HTTP $http_code, UAPI status $status"
+          if [ "$http_code" != "200" ] || [ "$status" != "1" ]; then
+            echo "::error::Failed to trigger cPanel deployment"
+            jq -r '.errors[]? // .' response.json || cat response.json
+            exit 1
+          fi
+          task_id=$(jq -r '.data.task_id // .data[0].task_id // empty' response.json)
+          if [ -z "$task_id" ]; then
+            echo "::error::No task_id returned by cPanel"
+            cat response.json
+            exit 1
+          fi
+          echo "Deployment triggered, task_id=$task_id"
+          echo "task_id=$task_id" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for cPanel deployment to finish
+        env:
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+          TASK_ID: ${{ steps.deploy.outputs.task_id }}
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 60); do
+            curl -sS -o retrieve.json \
+              -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
+              --data-urlencode "task_id=${TASK_ID}" \
+              "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControlDeployment/retrieve"
+
+            failed=$(jq -r '.data.timestamps.failed // .data[0].timestamps.failed // empty' retrieve.json)
+            succeeded=$(jq -r '.data.timestamps.succeeded // .data[0].timestamps.succeeded // empty' retrieve.json)
+
+            if [ -n "$failed" ]; then
+              echo "::error::cPanel deployment failed at $failed"
+              jq -r '.data.output // .data[0].output // .' retrieve.json
+              exit 1
+            fi
+            if [ -n "$succeeded" ]; then
+              echo "cPanel deployment succeeded at $succeeded"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::Timed out waiting for cPanel deployment to finish"
+          exit 1
