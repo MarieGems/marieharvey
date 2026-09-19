@@ -22,11 +22,15 @@ jobs:
           CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
         run: |
           set -uo pipefail
-          http_code=$(curl -sS -o response.json -w '%{http_code}' \
+          http_code=$(curl -sS -o response.json -D headers.txt -w '%{http_code}' \
+            -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36" \
+            -H "Accept: application/json" \
             -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
             --data-urlencode "repository_root=${REPO_ROOT}" \
             "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControl/update")
           echo "HTTP status: $http_code"
+          echo "--- response headers ---"
+          cat headers.txt
           echo "--- response body ---"
           cat response.json
           echo ""
@@ -45,6 +49,8 @@ jobs:
         run: |
           set -uo pipefail
           http_code=$(curl -sS -o response.json -w '%{http_code}' \
+            -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36" \
+            -H "Accept: application/json" \
             -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
             --data-urlencode "repository_root=${REPO_ROOT}" \
             "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControlDeployment/create")
@@ -74,6 +80,8 @@ jobs:
           set -uo pipefail
           for i in $(seq 1 60); do
             curl -sS -o retrieve.json \
+              -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36" \
+              -H "Accept: application/json" \
               -H "Authorization: cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}" \
               --data-urlencode "task_id=${TASK_ID}" \
               "https://${CPANEL_HOST}:${CPANEL_PORT}/execute/VersionControlDeployment/retrieve"
