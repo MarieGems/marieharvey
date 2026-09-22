@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -98,6 +98,12 @@
   <url>
     <loc>https://marieharvey.com/what-im-building-right-now.html</loc>
     <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marieharvey.com/my-small-business-owner-must-haves.html</loc>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
