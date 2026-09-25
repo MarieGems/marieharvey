@@ -18,6 +18,27 @@
 - [Random Thoughts](https://marieharvey.com/random-thoughts.html): informal posts on mom life and running two businesses
 - [Contact](https://marieharvey.com/contact.html): contact form and FAQ
 
+## Random Thoughts posts
+
+- [Which Heat Press Fits DTF Transfers From 4 to 12 Inches?](https://marieharvey.com/heat-press-size-for-dtf-transfers.html): Marie Gems DTF transfers run 4 to 12 inches and press at 320°F for 15 seconds. Here is how to match a heat press to that size range, plus hats and printers.
+- [Live Sale Supplies for Whatnot: Tags, Light, and Backdrop](https://marieharvey.com/live-sale-supplies-for-whatnot.html): Live sale supplies for Whatnot: number tags, an overhead phone light, a backdrop stand, size stickers, and a folding board from my Amazon list, with tips.
+- [Behind the Build: Rebuilding My Link-in-Bio Page for Real](https://marieharvey.com/behind-the-build-my-latest-website-project.html): Rebuilding my own link-in-bio page into a scroll film sounded simple. Here are the real bugs I hit along the way, including one that hid my own name completely.
+- [My Small Business Supplies List, Sorted by the Job It Does](https://marieharvey.com/my-small-business-owner-must-haves.html): My small business supplies list has 81 items on Amazon. Here is how I sort it by job: pressing, labeling, photos, and paper goods, plus where other lists fit.
+- [What I'm Building Right Now Across All My Businesses](https://marieharvey.com/what-im-building-right-now.html): Five real things went live the same day I wrote this: a new blog pipeline, this site's first Pinterest pipeline, an AI operating team, and a full reorg.
+- [AI Tools I Actually Use in My Business, and What For](https://marieharvey.com/ai-tools-i-actually-use-and-what-i-use-them-for.html): Not a generic top-ten AI tools list. Here's the exact stack running Marie Gems and Lavender Pin Co right now, including the one tool that's still blocked.
+- [Exactly What I Let AI Handle in My Businesses Today](https://marieharvey.com/what-i-actually-let-ai-handle-in-my-businesses.html): AI drafts almost everything I publish. It never spends my money, publishes a live storefront change, or finishes a video. Here's the real line I hold today.
+- [Using AI vs. Building an AI Workflow: The Real Difference](https://marieharvey.com/the-difference-between-using-ai-and-building-an-ai-workflow.html): Using AI is asking a chatbot for one thing. Building a workflow means deciding ahead of time who checks what. Here's the real day that taught me the difference.
+- [How I'm Actually Using AI Agents Across My Businesses](https://marieharvey.com/how-im-using-ai-agents-across-multiple-businesses.html): A real look at how I use AI agents across Marie Gems, Lavender Pin Co, and this site: Pinterest pins, blog posts, social captions, and two that only watch.
+- [From Paparazzi to Marie Gems: How Getting Let Go Became the Turning Point](https://marieharvey.com/how-marie-gems-started.html): The real story behind Marie Gems — how getting removed from Paparazzi jewelry became the push to build something of my own.
+- [Running Two Businesses and Raising 7 Kids: How the Days Actually Work](https://marieharvey.com/running-a-business-and-raising-seven-kids.html): How I actually run two businesses — Marie Gems and Lavender Pin Co — while raising seven kids in Wichita, Kansas.
+- [From Bullet Journals to DTF: How Marie Gems Actually Changed](https://marieharvey.com/marie-gems-origin-story.html): How Marie Gems evolved from bullet journals to ready-to-press DTF transfers — three years of trial, error, and real growth.
+- [Why I Started Lavender Pin Co After Building Marie Gems](https://marieharvey.com/why-i-started-lavender-pin-co.html): How a hard lesson from building Marie Gems — that a website and its traffic are two different problems — led to Lavender Pin Co.
+- [Multi-Channel Selling: Shopify, Vinted, and Whatnot Compared](https://marieharvey.com/shopify-vs-vinted-vs-whatnot.html): What it's actually like running a product business across Shopify, Vinted, and Whatnot at the same time.
+- [Ready-to-Press DTF Transfers: How They're Actually Made](https://marieharvey.com/how-dtf-transfers-are-made.html): A behind-the-scenes look at how ready-to-press DTF transfers actually get made, from design to finished product.
+- [DTF vs. Sublimation vs. HTV: Which Should You Use?](https://marieharvey.com/dtf-vs-sublimation-vs-htv.html): A real comparison of DTF, sublimation, and HTV printing methods — what each one is actually good for.
+- [Code, Craft, Create: The Three Skills Behind Everything I Build](https://marieharvey.com/code-craft-create.html): The three skills — code, craft, and create — behind everything built at Marie Gems and Lavender Pin Co.
+- [What My Web Design Degree Actually Taught Me About Running a Business](https://marieharvey.com/web-design-degree-lessons-for-entrepreneurs.html): What a web design education actually taught me about running a business — and why it led to a second brand.
+
 ## Related sites
 
 - Marie Gems: https://mariegems.com
