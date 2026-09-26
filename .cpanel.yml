@@ -3,3 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/marirahg/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - /bin/grep -qs why-i-started-lavender-pin-co ${DEPLOYPATH}.htaccess || printf '\nRedirect 301 /why-i-started-lavender-pin-co.html https://marieharvey.com/why-i-started-marie-glow-studio.html\n' >> ${DEPLOYPATH}.htaccess
