@@ -22,6 +22,16 @@
 <title>Random Thoughts | Marie Harvey</title>
 <meta name="description" content="Real talk from Marie Harvey — mom life, running two businesses, and whatever she's found lately. No fluff.">
 <link rel="canonical" href="https://marieharvey.com/random-thoughts.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Random Thoughts",
+  "url": "https://marieharvey.com/random-thoughts.html",
+  "description": "Real talk from Marie Harvey: mom life, running two businesses, and whatever she has found lately.",
+  "author": {"@type": "Person", "name": "Marie Harvey", "url": "https://marieharvey.com"}
+}
+</script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Random Thoughts | Marie Harvey">
 <meta property="og:description" content="Real talk from Marie Harvey — mom life, running two businesses, and whatever she's found lately. No fluff.">
@@ -39,7 +49,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=optional"></noscript>
 <link rel="stylesheet" href="_shared/premium2.css?v=2">
-<link rel="stylesheet" href="_shared/site.css?v=25">
+<link rel="stylesheet" href="_shared/site.css?v=26">
 </head><body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8SKSWW"
@@ -230,10 +240,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <!-- POST-CARDS:END -->
 </div></section>
+<section class="content-blk"><div class="wrap">
+  <div class="signup-block2" data-reveal>
+    <div class="signup-lead"><h2>Get Random Thoughts in your inbox</h2><p>New posts on mom life, running two businesses, and what I am building. Or see what I have built: <a href="https://mariegems.com">Marie Gems</a> and <a href="https://marieglowstudio.com">Marie Glow Studio</a>.</p></div>
+    <div id="fd-form-6a908b45b15163781123ff16"></div>
+  </div>
+</div></section>
+
 
 <div class="cheetah-strip"></div>
-<footer class="blk"><div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:14px">
-  <span class="fwm">Marie Harvey</span>
+<footer class="blk"><div class="wrap">
+  <div class="foot">
+    <span class="fwm">Marie Harvey</span>
+    <div class="foot-cols">
+      <div class="foot-col"><b>My businesses</b><a href="https://mariegems.com">Marie Gems</a><a href="https://marieglowstudio.com">Marie Glow Studio</a></div>
+      <div class="foot-col"><b>On this site</b><a href="about.html">My story</a><a href="brands.html">Brands</a><a href="random-thoughts.html">Random Thoughts</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><b>Follow along</b><a href="https://www.facebook.com/juanitamarieharvey" target="_blank" rel="noopener">Facebook</a><a href="https://www.pinterest.com/marieharveyco" target="_blank" rel="noopener">Pinterest</a></div>
+    </div>
+    <span class="foot-note">Marie Harvey · Wichita, Kansas</span>
+  </div>
 </div></footer>
 
 <script src="_shared/vendor.min.js?v=1" defer></script>
@@ -255,5 +280,46 @@ document.addEventListener('DOMContentLoaded', function(){
     }));
   }
 });
+</script>
+<script>
+  // Flodesk signup form -- "Random Thoughts" list -- lazy-loaded once the signup block nears the viewport
+  function loadFlodesk() {
+    (function(w, d, t, h, s, n) {
+      if (d.querySelector('script[src*="flodesk"]')) return;
+      w.FlodeskObject = n;
+      var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+      w[n] = w[n] || fn;
+      var f = d.getElementsByTagName(t)[0];
+      var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+      var sm = d.createElement(t);
+      sm.async = true; sm.type = 'module'; sm.src = h + s + '.mjs' + v;
+      f.parentNode.insertBefore(sm, f);
+      var sn = d.createElement(t);
+      sn.async = true; sn.noModule = true; sn.src = h + s + '.js' + v;
+      f.parentNode.insertBefore(sn, f);
+    })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+
+    window.fd('form', {
+      formId: '6a908b45b15163781123ff16',
+      containerEl: '#fd-form-6a908b45b15163781123ff16'
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    const target = document.querySelector('.signup-block2');
+    if(!target) return;
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            loadFlodesk();
+            io.disconnect();
+          }
+        });
+      }, {rootMargin:'200px 0px'});
+      io.observe(target);
+    } else {
+      loadFlodesk();
+    }
+  });
 </script>
 </body></html>

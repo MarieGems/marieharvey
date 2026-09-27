@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=optional" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=optional"></noscript>
 <link rel="stylesheet" href="_shared/premium2.css?v=2">
-<link rel="stylesheet" href="_shared/site.css?v=25">
+<link rel="stylesheet" href="_shared/site.css?v=26">
 </head><body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8SKSWW"
@@ -72,21 +72,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3 style="font-family:var(--disp);font-weight:700;font-size:22px;margin-bottom:12px">Looking for web design, Pinterest, or SEO help?</h3>
       <p>That's exactly what Marie Glow Studio does.</p>
       <a href="https://marieglowstudio.com" class="btn2" data-magnetic>See services and get in touch</a>
+      <h3 style="font-family:var(--disp);font-weight:700;font-size:22px;margin:36px 0 12px">Shopping for DTF transfers or custom products?</h3>
+      <p>That's <a href="https://mariegems.com">Marie Gems</a>.</p>
+      <a href="https://mariegems.com" class="btn2" data-magnetic>Shop Marie Gems</a>
     </div>
-    <form class="form2" id="contactForm" data-reveal>
+    <div data-reveal>
+    <form class="form2" id="contactForm" novalidate>
+      <p class="form-help" id="formHelp">All three fields are required. Your message goes straight to me, and I read every one.</p>
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required>
+      <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required aria-describedby="name-err">
+      <p class="field-err" id="name-err" role="alert"></p>
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="you@email.com" required>
+      <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-describedby="email-err">
+      <p class="field-err" id="email-err" role="alert"></p>
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" required></textarea>
+      <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" required aria-describedby="message-err"></textarea>
+      <p class="field-err" id="message-err" role="alert"></p>
       <div style="position:absolute;left:-9999px" aria-hidden="true">
         <label for="website">Website</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
       </div>
       <button type="submit" id="contactSubmit">Send message</button>
-      <p id="formStatus" style="font-size:14px;margin-top:14px"></p>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
+    <div class="form-success" id="formSuccess" tabindex="-1" hidden>
+      <h3>Message sent</h3>
+      <p>Thank you. Your message is in my inbox and I will get back to you as soon as I can.</p>
+      <button type="button" class="btn2-outline" id="sendAnother" style="background:transparent;cursor:pointer;min-height:44px">Send another message</button>
+    </div>
+    </div>
   </div>
   <p style="font-size:14px;color:var(--muted);margin-top:20px">I run both businesses myself, so I read every message — just give me a little time to get back to you.</p>
 </div></section>
@@ -100,11 +114,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq2-item" data-reveal>
       <h3>What is Marie Gems?</h3>
-      <p>Marie Gems is a DTF transfer and custom product shop, three years in the making. It sells across Shopify, Vinted, Whatnot, Etsy, and direct sales.</p>
+      <p><a href="https://mariegems.com">Marie Gems</a> is a DTF transfer and custom product shop, three years in the making. It sells across Shopify, Vinted, Whatnot, Etsy, and direct sales.</p>
     </div>
     <div class="faq2-item" data-reveal>
       <h3>What is Marie Glow Studio?</h3>
-      <p>Marie Glow Studio is Marie Harvey's digital studio for web design and development, Pinterest marketing, and SEO and digital strategy, for product and service small businesses that want to get found and look like themselves once they do.</p>
+      <p><a href="https://marieglowstudio.com">Marie Glow Studio</a> is Marie Harvey's digital studio for web design and development, Pinterest marketing, and SEO and digital strategy, for product and service small businesses that want to get found and look like themselves once they do.</p>
     </div>
     <div class="faq2-item" data-reveal>
       <h3>Does Marie Harvey run her businesses alone?</h3>
@@ -112,7 +126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="faq2-item" data-reveal>
       <h3>How can I work with Marie Harvey?</h3>
-      <p>For web design, Pinterest marketing, or SEO help, reach out through Marie Glow Studio. For DTF transfers and custom products, shop Marie Gems. For anything else, use the contact form on this page.</p>
+      <p>For web design, Pinterest marketing, or SEO help, reach out through <a href="https://marieglowstudio.com">Marie Glow Studio</a>. For DTF transfers and custom products, shop <a href="https://mariegems.com">Marie Gems</a>. For anything else, use the contact form on this page.</p>
     </div>
     <div class="faq2-item" data-reveal>
       <h3>Where is Marie Harvey located?</h3>
@@ -179,8 +193,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <div class="cheetah-strip"></div>
-<footer class="blk"><div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:14px">
-  <span class="fwm">Marie Harvey</span>
+<footer class="blk"><div class="wrap">
+  <div class="foot">
+    <span class="fwm">Marie Harvey</span>
+    <div class="foot-cols">
+      <div class="foot-col"><b>My businesses</b><a href="https://mariegems.com">Marie Gems</a><a href="https://marieglowstudio.com">Marie Glow Studio</a></div>
+      <div class="foot-col"><b>On this site</b><a href="about.html">My story</a><a href="brands.html">Brands</a><a href="random-thoughts.html">Random Thoughts</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><b>Follow along</b><a href="https://www.facebook.com/juanitamarieharvey" target="_blank" rel="noopener">Facebook</a><a href="https://www.pinterest.com/marieharveyco" target="_blank" rel="noopener">Pinterest</a></div>
+    </div>
+    <span class="foot-note">Marie Harvey · Wichita, Kansas</span>
+  </div>
 </div></footer>
 
 <script src="_shared/vendor.min.js?v=1" defer></script>
@@ -206,35 +228,50 @@ document.addEventListener('DOMContentLoaded', function(){
   if(contactForm){
     const submitBtn=document.getElementById('contactSubmit');
     const status=document.getElementById('formStatus');
+    const success=document.getElementById('formSuccess');
+    const fields=['name','email','message'].map(id=>document.getElementById(id));
+    const emailOk=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const setErr=(el,msg)=>{
+      const out=document.getElementById(el.id+'-err');
+      out.textContent=msg||'';out.classList.toggle('show',!!msg);
+      if(msg){el.setAttribute('aria-invalid','true')}else{el.removeAttribute('aria-invalid')}
+    };
+    const check=el=>{
+      const v=el.value.trim();
+      if(!v){setErr(el,el.id==='name'?'Please enter your name.':el.id==='email'?'Please enter your email address.':'Please write a message.');return false}
+      if(el.id==='email'&&!emailOk(v)){setErr(el,'That email address does not look right. It should look like you@email.com.');return false}
+      if(el.id==='message'&&v.length>5000){setErr(el,'That message is too long. Please keep it under 5,000 characters.');return false}
+      setErr(el,'');return true;
+    };
+    const showStatus=(msg,isErr)=>{status.textContent=msg;status.classList.toggle('err',!!isErr)};
+    fields.forEach(el=>{el.addEventListener('blur',()=>{if(el.value.trim()||el.hasAttribute('aria-invalid'))check(el)});el.addEventListener('input',()=>{if(el.hasAttribute('aria-invalid'))check(el)})});
     contactForm.addEventListener('submit', function(e){
       e.preventDefault();
+      showStatus('');
+      const bad=fields.filter(el=>!check(el));
+      if(bad.length){bad[0].focus();showStatus('Please fix the '+(bad.length>1?bad.length+' fields':'field')+' marked above, then send again.',true);return}
       submitBtn.disabled=true;
       submitBtn.textContent='Sending...';
-      status.textContent='';
-      status.style.color='';
       fetch('contact-handler.php',{method:'POST',body:new FormData(contactForm)})
-        .then(r=>r.json())
-        .then(data=>{
+        .then(r=>r.json().catch(()=>({ok:false,error:null})).then(data=>({r,data})))
+        .then(({r,data})=>{
           if(data.ok){
-            status.textContent="Thanks — your message is in my inbox. I'll get back to you soon.";
-            status.style.color='var(--ink)';
             contactForm.reset();
-            submitBtn.textContent='Send message';
-            submitBtn.disabled=false;
+            contactForm.hidden=true;
+            success.hidden=false;
+            success.focus();
+          } else if(data.error&&r.status===400){
+            showStatus(data.error+' Check the fields above and try again.',true);
           } else {
-            status.textContent=data.error||'Something went wrong — please try again.';
-            status.style.color='#b3441f';
-            submitBtn.textContent='Send message';
-            submitBtn.disabled=false;
+            showStatus('Your message did not send, and nothing was lost. Please check your connection and press Send message again in a moment.',true);
           }
         })
         .catch(()=>{
-          status.textContent='Something went wrong — please try again, or email me directly.';
-          status.style.color='#b3441f';
-          submitBtn.textContent='Send message';
-          submitBtn.disabled=false;
-        });
+          showStatus('Your message did not send, and nothing was lost. Please check your connection and press Send message again in a moment.',true);
+        })
+        .finally(()=>{submitBtn.disabled=false;submitBtn.textContent='Send message'});
     });
+    document.getElementById('sendAnother').addEventListener('click',()=>{success.hidden=true;contactForm.hidden=false;showStatus('');fields[0].focus()});
   }
 });
 </script>

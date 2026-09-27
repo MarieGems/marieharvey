@@ -4,8 +4,8 @@
 
 header('Content-Type: application/json');
 
-function respond($ok, $error = null) {
-    http_response_code($ok ? 200 : 400);
+function respond($ok, $error = null, $status = 400) {
+    http_response_code($ok ? 200 : $status);
     echo json_encode($ok ? ['ok' => true] : ['ok' => false, 'error' => $error]);
     exit;
 }
@@ -63,7 +63,7 @@ $headers = "From: Marie Harvey Contact Form <$fromAddress>\r\n"
 $sent = mail($to, $subject, $body, $headers);
 
 if (!$sent) {
-    respond(false, "Something went wrong sending that — please try again, or email me directly.");
+    respond(false, "Something went wrong sending that — please try again in a moment.", 500);
 }
 
 respond(true);
