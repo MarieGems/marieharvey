@@ -1,0 +1,11 @@
+# BEGIN turnstile-secret guard: never serve the Turnstile secret key file, even if it is placed here by mistake
+<FilesMatch "^turnstile-secret.*$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+# END turnstile-secret guard
