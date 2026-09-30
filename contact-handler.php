@@ -47,7 +47,10 @@ if ($turnstileSecret !== '') {
     ]]);
     $verify = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $ctx);
     $result = $verify ? json_decode($verify, true) : null;
-    if (empty($result['success'])) {
+    $allowedHosts = ['marieharvey.com', 'www.marieharvey.com'];
+    if (empty($result['success'])
+        || ($result['action'] ?? '') !== 'contact'
+        || !in_array($result['hostname'] ?? '', $allowedHosts, true)) {
         respond(false, 'The spam check failed. Please refresh the page and try again.');
     }
 }
