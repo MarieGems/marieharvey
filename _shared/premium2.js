@@ -58,12 +58,12 @@
   }
 
   // ---- reveal observer (reveals + split lines) ----
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting&&(e.intersectionRatio>=.15||(e.rootBounds&&e.intersectionRect.height>=e.rootBounds.height*.1))){
     const t=e.target;
     if(t.hasAttribute('data-split')){const lines=[...t.querySelectorAll('.split-line')];lines.forEach((l,i)=>setTimeout(()=>l.classList.add('in'),i*90));}
     else{t.classList.add('in');}
     io.unobserve(t);
-  }});},{rootMargin:'0px 0px -12% 0px',threshold:.15});
+  }});},{rootMargin:'0px 0px -12% 0px',threshold:[0,.05,.1,.15]});
   D.querySelectorAll('[data-reveal],[data-split]').forEach(n=>io.observe(n));
 
   // ---- magnetic buttons ----

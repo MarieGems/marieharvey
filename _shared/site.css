@@ -247,3 +247,6 @@ footer.blk .foot-note{width:100%;font-size:13px;position:relative;z-index:1;marg
 
 /* blog bodies are far taller than the viewport, so the reveal observer's 15% visibility threshold never fires (esp. on phones) and the text stays at opacity:0. Keep them always visible. */
 .post-content[data-reveal]{opacity:1;transform:none}
+
+/* no-JS / failed-JS safety: never leave reveal content hidden */
+@media (scripting:none){[data-reveal]{opacity:1;transform:none}}
