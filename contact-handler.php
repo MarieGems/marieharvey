@@ -22,6 +22,36 @@ if (!empty($_POST['website'])) {
     respond(true);
 }
 
+// Cloudflare Turnstile: verify the token the widget added to the form. The secret
+// key lives outside the repo (TURNSTILE_SECRET env var, or a one-line file at
+// ../turnstile-secret.txt above the web root). If no secret is configured yet,
+// verification is skipped so the form keeps working until it is set up.
+$turnstileSecret = getenv('TURNSTILE_SECRET') ?: '';
+if ($turnstileSecret === '' && is_readable(__DIR__ . '/../turnstile-secret.txt')) {
+    $turnstileSecret = trim(file_get_contents(__DIR__ . '/../turnstile-secret.txt'));
+}
+if ($turnstileSecret !== '') {
+    $token = trim($_POST['cf-turnstile-response'] ?? '');
+    if ($token === '') {
+        respond(false, 'Please complete the spam check and try again.');
+    }
+    $ctx = stream_context_create(['http' => [
+        'method'  => 'POST',
+        'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
+        'content' => http_build_query([
+            'secret'   => $turnstileSecret,
+            'response' => $token,
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+        ]),
+        'timeout' => 8,
+    ]]);
+    $verify = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $ctx);
+    $result = $verify ? json_decode($verify, true) : null;
+    if (empty($result['success'])) {
+        respond(false, 'The spam check failed. Please refresh the page and try again.');
+    }
+}
+
 $name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $message = trim($_POST['message'] ?? '');

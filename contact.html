@@ -92,6 +92,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="website">Website</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <!-- Cloudflare Turnstile: replace YOUR_TURNSTILE_SITE_KEY with the site key from the Cloudflare dashboard. -->
+      <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="light"></div>
       <button type="submit" id="contactSubmit">Send message</button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
@@ -205,6 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div></footer>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="_shared/vendor.min.js?v=1" defer></script>
 <script src="_shared/premium2.js?v=3" defer></script>
 <script>
@@ -269,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function(){
         .catch(()=>{
           showStatus('Your message did not send, and nothing was lost. Please check your connection and press Send message again in a moment.',true);
         })
-        .finally(()=>{submitBtn.disabled=false;submitBtn.textContent='Send message'});
+        .finally(()=>{if(window.turnstile)window.turnstile.reset();submitBtn.disabled=false;submitBtn.textContent='Send message'});
     });
     document.getElementById('sendAnother').addEventListener('click',()=>{success.hidden=true;contactForm.hidden=false;showStatus('');fields[0].focus()});
   }
