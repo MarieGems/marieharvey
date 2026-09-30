@@ -24,11 +24,13 @@ if (!empty($_POST['website'])) {
 
 // Cloudflare Turnstile: verify the token the widget added to the form. The secret
 // key lives outside the repo (TURNSTILE_SECRET env var, or a one-line file at
-// ../turnstile-secret.txt above the web root). If no secret is configured yet,
+// turnstile-secret.txt in the account home folder, one or two levels above this file). If no secret is configured yet,
 // verification is skipped so the form keeps working until it is set up.
 $turnstileSecret = getenv('TURNSTILE_SECRET') ?: '';
-if ($turnstileSecret === '' && is_readable(__DIR__ . '/../turnstile-secret.txt')) {
-    $turnstileSecret = trim(file_get_contents(__DIR__ . '/../turnstile-secret.txt'));
+foreach ([__DIR__ . '/../turnstile-secret.txt', __DIR__ . '/../../turnstile-secret.txt'] as $secretFile) {
+    if ($turnstileSecret === '' && is_readable($secretFile)) {
+        $turnstileSecret = trim(file_get_contents($secretFile));
+    }
 }
 if ($turnstileSecret !== '') {
     $token = trim($_POST['cf-turnstile-response'] ?? '');
