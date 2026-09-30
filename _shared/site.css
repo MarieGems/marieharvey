@@ -244,3 +244,6 @@ footer.blk .foot-note{width:100%;font-size:13px;position:relative;z-index:1;marg
 .form-success p{margin:0 0 18px}
 .form-success:focus{outline:none}
 .form-success button{font-family:var(--sans);font-size:14px;color:var(--ink);padding:13px 29px;border-radius:999px}
+
+/* blog bodies are far taller than the viewport, so the reveal observer's 15% visibility threshold never fires (esp. on phones) and the text stays at opacity:0. Keep them always visible. */
+.post-content[data-reveal]{opacity:1;transform:none}
