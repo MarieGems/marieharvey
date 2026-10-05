@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -115,7 +115,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts-2.html</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -182,6 +182,12 @@
   <url>
     <loc>https://marieharvey.com/tumbler-press-for-sublimation.html</loc>
     <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marieharvey.com/how-ai-has-changed-the-way-i-build-websites.html</loc>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
