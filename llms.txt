@@ -20,6 +20,7 @@
 
 ## Random Thoughts posts
 
+- [My AI Quality Check Kept Missing Cut-Off Text, So I Fixed It](https://marieharvey.com/ai-quality-check-for-cut-off-text.html): My AI quality check kept approving pins with cut-off text. Here is how I swapped a visual check for a measured one, and what happened to earlier pins.
 - [Kitchen Tools for a Busy Family: Slow Cooker to Skillet](https://marieharvey.com/kitchen-tools-for-a-busy-family.html): Kitchen tools for a busy family: a slow cooker, immersion blender, cast iron skillet, snack boxes, and a kettle from my Benable and Amazon lists, with notes.
 - [Fall Decor for a House With Kids: Wipeable and Flameless](https://marieharvey.com/fall-decor-for-a-house-with-kids.html): Fall decor for a house with kids: wipe-clean placemats, flameless candles, low profile doormats, and quick-swap pillow covers from my Benable and Amazon lists.
 - [Product Photo Setup: Light Box, Backdrop, and Surface](https://marieharvey.com/products-that-make-running-a-product-based-business-easier.html): A 12x12 LED photo light box, a tabletop backdrop, and purple peel-and-stick wallpaper: a small product photo setup from my Business Supplies list for a shop.
