@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -115,7 +115,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts-2.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -211,7 +211,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts-3.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -307,7 +307,7 @@
   </url>
   <url>
     <loc>https://marieharvey.com/random-thoughts-4.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -326,6 +326,24 @@
   <url>
     <loc>https://marieharvey.com/the-step-i-forgot-when-i-got-used-to-doing-everything-myself.html</loc>
     <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marieharvey.com/peanuts-christmas-gifts.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marieharvey.com/pinterest-description-hooks.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://marieharvey.com/things-to-do-in-wichita-with-kids.html</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
