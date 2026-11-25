@@ -20,6 +20,7 @@
 
 ## Random Thoughts posts
 
+- [Why My Pinterest Pin Generator Crashed Partway Through](https://marieharvey.com/pinterest-pin-generator-crashed-mid-batch.html): My Pinterest pin generator for Marie Gems crashed 23 pins into a 100-pin batch. Here is the dedup rule that was missing one piece, and the real fix I made.
 - [Why My AI Build Declined an Instruction It Could Not Verify](https://marieharvey.com/ai-build-declined-an-instruction.html): An overnight AI build for a Marie Glow Studio YouTube video declined an unverified instruction, and a judge subagent caught two real caption-collision bugs.
 - [A Sublimation Oven and Blank Tumblers I Haven't Shown Yet](https://marieharvey.com/sublimation-oven-and-blank-tumblers.html): A sublimation convection oven, sticker paper, and 40 oz and 30 oz tumbler blanks from my Sublimation Starter Kit list that two earlier posts left out.
 - [Black Friday Deals on the Real Equipment I Already Use](https://marieharvey.com/black-friday-deals-on-things-i-already-use.html): Black Friday deals are worth watching for the real equipment I already use and recommend: a heat press, a DTF printer, a label printer, and a standing desk.
