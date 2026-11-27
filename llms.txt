@@ -20,6 +20,7 @@
 
 ## Random Thoughts posts
 
+- [A Fall Candle, Runner, and Pillow Covers I Have Not Shown](https://marieharvey.com/fall-candle-runner-and-pillow-covers.html): A fall candle, a 120 inch table runner, and plaid pillow covers from my Amazon list, three real items that have not made it into my other fall decor posts yet.
 - [What I'd Wear to a Family Holiday Gathering This Year](https://marieharvey.com/what-id-wear-to-a-family-holiday-gathering.html): A dressy casual jumpsuit, a crop top and wide-leg pants set, and a cocktail dress from my Amazon list, matched to three different holiday gatherings this year.
 - [Why My Pinterest Pin Generator Crashed Partway Through](https://marieharvey.com/pinterest-pin-generator-crashed-mid-batch.html): My Pinterest pin generator for Marie Gems crashed 23 pins into a 100-pin batch. Here is the dedup rule that was missing one piece, and the real fix I made.
 - [Why My AI Build Declined an Instruction It Could Not Verify](https://marieharvey.com/ai-build-declined-an-instruction.html): An overnight AI build for a Marie Glow Studio YouTube video declined an unverified instruction, and a judge subagent caught two real caption-collision bugs.
